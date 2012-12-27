@@ -25,8 +25,6 @@ defmodule Mix.Tasks.Server do
   end
 
   defp validate_dynamo(dynamo) do
-    dp "dynamo:"
-    dp dynamo
     dp "dynamo.config[:dynamo]:"
     dp dynamo.config[:dynamo]
     config   = dynamo.config[:dynamo]

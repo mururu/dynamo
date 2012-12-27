@@ -20,9 +20,23 @@ defmodule Mix.Tasks.Server do
     :timer.sleep(:infinity)
   end
 
+  def dp(a) do
+    IO.inspect :stderr, a
+  end
+
   defp validate_dynamo(dynamo) do
+    dp "dynamo:"
+    dp dynamo
+    dp "dynamo.config[:dynamo]:"
+    dp dynamo.config[:dynamo]
     config   = dynamo.config[:dynamo]
     endpoint = config[:endpoint]
+
+    dp "endpoint"
+    dp endpoint
+
+    dp "ensure_compiled"
+    dp Code.ensure_compiled?(endpoint)
 
     if endpoint && not Code.ensure_compiled?(endpoint) do
       if config[:compile_on_demand] do
